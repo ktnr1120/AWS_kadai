@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -17,6 +17,18 @@ class PostController extends Controller
     {
         return view('posts.show')->with(['post' => $post]);
        //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
+    }
+    
+    public function create()
+    {
+        return view('posts.create');
+    }
+    
+    public function store(Post $post, PostRequest $request)//引数をRequestからPostRequestにする
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
     }
 }
 ?>
