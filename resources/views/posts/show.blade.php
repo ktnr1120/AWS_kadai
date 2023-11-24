@@ -17,6 +17,7 @@
                <div class="content_post">
                    <h3>本文</h3>
                    <p>{{ $post->body }}</p>
+                   <small>{{ $post->user ? $post->user->name : 'Unknown User' }}</small>
                </div>
             </div>
             <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
