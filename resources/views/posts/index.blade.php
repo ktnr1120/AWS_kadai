@@ -16,6 +16,7 @@
                         <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}</h2></a>
                         <p class='body'>{{ $post->body }}</p>
                         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                        <small>{{ $post->user ? $post->user->name : 'Unknown User' }}</small>
                     </div>
                 @endforeach
             </div>

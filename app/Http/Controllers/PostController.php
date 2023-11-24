@@ -23,6 +23,7 @@ class PostController extends Controller
     public function store(Post $post, PostRequest $request)//引数をRequestからPostRequestにする
     {
         $input = $request['post'];
+        $input += ['user_id' => $request->user()->id];
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
@@ -35,8 +36,8 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $input__post = $request['post'];
+        $input_post += ['user_id' => $request->user()->id];
         $post->fill($input__post)->save();
-        
         return redirect('/posts/' . $post->id);
     }
     
